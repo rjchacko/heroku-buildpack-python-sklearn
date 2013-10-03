@@ -201,3 +201,26 @@ done
 
 deep-mv $BUILD_DIR $ORIG_BUILD_DIR
 deep-mv $TMP_APP_DIR $APP_DIR
+
+# ### Add GEOS support  
+GEOS_BINARY="https://s3.amazonaws.com/jcsanford-binaries/heroku/geos-3.3.2-heroku.tar.gz"
+GEOS_VENDOR="vendor/geos"
+
+mkdir -p $1/$GEOS_VENDOR
+curl $GEOS_BINARY -o - | tar -xz -C $1/$GEOS_VENDOR -f -
+
+# ### Add PROJ 
+PROJ_BINARY="https://s3.amazonaws.com/jcsanford-binaries/heroku/proj-4.8.0-heroku.tar.gz"
+PROJ_VENDOR="vendor/proj"
+
+mkdir -p $1/$PROJ_VENDOR
+curl $PROJ_BINARY -o - | tar -xz -C $1/$PROJ_VENDOR -f - 
+
+# ### Add GDAL
+GDAL_BINARY="https://s3.amazonaws.com/jcsanford-binaries/heroku/gdal-1.8.1-heroku.tar.gz"
+GDAL_VENDOR="vendor/gdal"
+
+mkdir -p $1/$GDAL_VENDOR
+curl $GDAL_BINARY -o - | tar -xz -C $1/$GDAL_VENDOR -f - 
+
+
